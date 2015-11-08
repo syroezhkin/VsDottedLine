@@ -10,6 +10,8 @@ This is a SketchUp Ruby extension. Using it you can:
 1. Select the edges (only)
 2. Right-click on the selection and click **Replace by dotted lines...**
 
+Watch the video: [VS Dotted Line plugin for SketchUp](https://www.youtube.com/watch?v=Fs714SQXSdk&feature=youtu.be) (YouTube)
+
 ## Installing
 
 Place the `vs_dotted_line.rb` file into appropriate folder, and then restart SketchUp.
