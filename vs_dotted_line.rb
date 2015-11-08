@@ -17,6 +17,7 @@ module VsDottedLine
     end
 
     def self.add_dotted_line(start_point, end_point, dot, space) # accepts coordinates of two points with the properties and creates the dotted line
+        step = dot + space
         distance = start_point.distance end_point
         number_of_lines = (distance / step).to_i
 
@@ -44,6 +45,8 @@ module VsDottedLine
         prompts = ["Dots", "Spaces"]
         defaults = [100.0.mm, 20.0.mm]
         input = UI.inputbox(prompts, defaults, "Enter the line properties")
+        dot = input[0]
+        space = input[1]
 
         model = Sketchup.active_model
         entities = model.active_entities
