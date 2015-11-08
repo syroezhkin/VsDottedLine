@@ -5,6 +5,11 @@ This is a SketchUp Ruby extension. Using it you can:
 * Replace selected edges by dotted line.
 * Customize the length of dot lines and spaces between them.
 
+## How to use
+
+1. Select the edges (only)
+2. Right-click on the selection and click **Replace by dotted lines...**
+
 ## Installing
 
 Place the `vs_dotted_line.rb` file into appropriate folder, and then restart SketchUp.
