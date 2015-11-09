@@ -19,18 +19,32 @@ module VsDottedLine
   def self.add_dotted_line(start_point, end_point, dot, space)
     step = dot + space
     distance = start_point.distance end_point
-    number_of_lines = (distance / step).to_i
+    number_of_lines = (distance / step).ceil
 
     vector = start_point.vector_to end_point
     vector_dot = vector.clone
     vector_dot.length = dot
+
     vector_step = vector.clone
     vector_step.length = step
 
+    vector_first = vector.clone
+    shift = ((vector_step.length * number_of_lines - space) - distance ) / 2
+    vector_first.length = (dot - shift)
+
+    vector_shift = vector.clone
+    vector_shift.length = (step - shift)
+
     model = Sketchup.active_model
     entities = model.active_entities
+
     pt1 = start_point
-    pt2 = start_point.offset vector_dot
+    pt2 = start_point.offset vector_first
+    first_line = entities.add_line pt1, pt2
+    pt1 = start_point.offset vector_shift
+    pt2 = pt1.offset vector_dot
+
+    number_of_lines -= 2
 
     number_of_lines.times do
       line = entities.add_line pt1, pt2
