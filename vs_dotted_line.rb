@@ -72,12 +72,16 @@ module VsDottedLine
 
     selection_count.times do
       selection.each do |edge|
-        pt1 = edge.start.position
-        pt2 = edge.end.position
-        entities.erase_entities edge
-        dotted_line = VsDottedLine.add_dotted_line(pt1, pt2, dot, space)
+        if edge.length > (dot + space)
+          pt1 = edge.start.position
+          pt2 = edge.end.position
+          entities.erase_entities edge
+          dotted_line = VsDottedLine.add_dotted_line(pt1, pt2, dot, space)
+        end
       end
     end
+
+    selection.clear
 
     model.commit_operation # Replacing The Lines
   end
