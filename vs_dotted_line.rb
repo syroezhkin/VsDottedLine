@@ -29,7 +29,7 @@ module VsDottedLine
     vector_step.length = step
 
     vector_first = vector.clone
-    shift = ((vector_step.length * number_of_lines - space) - distance ) / 2
+    shift = ((vector_step.length * number_of_lines - space) - distance) / 2
     vector_first.length = (dot - shift)
 
     vector_shift = vector.clone
@@ -60,6 +60,7 @@ module VsDottedLine
     prompts = ["Dots", "Spaces"]
     defaults = [100.0.mm, 20.0.mm]
     input = UI.inputbox(prompts, defaults, "Enter the line properties")
+    return nil if not input
     dot = input[0]
     space = input[1]
 
