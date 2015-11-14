@@ -16,7 +16,7 @@ Watch the video: [VS Dotted Line plugin for SketchUp](https://www.youtube.com/wa
 
 ## Installing
 
-Place the `vs_dotted_line.rb` file into appropriate folder, and then restart SketchUp.
+Place the `vs_dotted_line.rb` file and `vs_dotted_line` folder into plugins folder, and then restart SketchUp.
 
 Windows - the default location is:
 `C:\Users\YOUR USERNAME\AppData\Roaming\SketchUp\SketchUp 2015\SketchUp\Plugins`
