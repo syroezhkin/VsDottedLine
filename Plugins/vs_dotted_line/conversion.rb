@@ -1,63 +1,53 @@
-# Copyright 2015, Vladimir Syroezhkin
+# Copyright 2015—2016, Vladimir Syroezhkin
 # vladimir@syroezhkin.net
 
-module VS
+module VS::DottedLine
 
-  module DottedLine
+  class ConversionToDotted
 
-    class Conversion
+    attr_accessor :dot
+    attr_accessor :space
+    attr_accessor :soften
 
-      def initialize(selection, dot = nil, space = nil)
-        @selection = selection
-        @dot = dot
-        @space = space
-        model = Sketchup.active_model
-        model.start_operation "Conversion The Lines"
+    def initialize(dot = nil, space = nil, soften = nil)
+      @dot = dot
+      @space = space
+      @dotted_lines = []
+      @soften = soften
+    end
 
-        return convert_selection if selection.instance_of? Sketchup::Selection
-        return convert_edge if selection.instance_of? Sketchup::Edge
+    def convert(entity)
+      @selection = entity
+      entities = Sketchup.active_model.active_entities
+      group = entities.add_group
+      @entities = group.entities
+      convert_edge if @selection.instance_of? Sketchup::Edge
+      convert_group(@selection) if @selection.instance_of? Sketchup::Group
+      convert_selection if @selection.instance_of? Sketchup::Selection
+      entities.erase_entities @selection if self.soften == false
+    end
 
-        model.commit_operation # Replacing The Lines
-      end
+    private
 
-      private
+    def convert_edge(entities = Sketchup.active_model.active_entities, edge = @selection)
+      pt1 = edge.start.position
+      pt2 = edge.end.position
+      dotted_line = Dotted.new pt1, pt2, @dot, @space
+      dotted_line.draw @entities
+      edge.soft = 'true' if self.soften == true
+    end
 
-      def get_inputbox
-        unless @dot && @space
-          prompts = ["Dots", "Spaces"]
-          defaults = [100.0.mm, 20.0.mm]
-          input = UI.inputbox(prompts, defaults, "Enter the line properties")
-          return nil if not input
-          @dot = input[0]
-          @space = input[1]
-        end
-      end
+    def convert_group(ent)
+      entities = ent.entities
+      entities.each { |edge| convert_edge(@entities, edge) }
+    end
 
-      def draw_line(edge)
-        entities = Sketchup.active_model.active_entities
-        if edge.length > (@dot + @space)
-          pt1 = edge.start.position
-          pt2 = edge.end.position
-          entities.erase_entities edge
-          dotted_line = Dotted.new(pt1, pt2, @dot, @space)
-        end
-      end
+    def convert_selection
+      array = []
+      @selection.each { |s| array.push s }
+      array.each { |a| convert_edge(@entities, a) if a.instance_of? Sketchup::Edge }
+    end
 
-      def convert_selection
-        get_inputbox
-        @selection.count.times do
-          @selection.each { |edge| draw_line(edge) }
-        end
-        @selection.clear
-      end
+  end # class Conversion
 
-      def convert_edge
-        get_inputbox
-        draw_line(@selection)
-      end
-
-    end # class Conversion
-
-  end # module DottedLine
-
-end #module VS
+end # module VS::DottedLine

@@ -1,16 +1,15 @@
-module VS
+# Copyright 2015-2016, Vladimir Syroezhkin
+# vladimir@syroezhkin.net
 
-  module DottedLine
+module VS::DottedLine
 
-    def self.select
-      model = Sketchup.active_model
-      entities = model.active_entities
-      selection = model.selection
-      return nil if selection.empty?
-      selection.each { |sel| return nil unless (sel.instance_of? Sketchup::Edge) }
-      selection
-    end
+  def self.select
+    model = Sketchup.active_model
+    entities = model.active_entities
+    selection = model.selection
+    return nil if selection.empty?
+    selection.each { |sel| return nil unless (sel.instance_of? Sketchup::Edge) }
+    selection
+  end
 
-  end # module DottedLine
-
-end # module VS
+end # module VS::DottedLine
