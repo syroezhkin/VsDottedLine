@@ -10,7 +10,7 @@ module VS
 
   vs_dotted_line = SketchupExtension.new("VS Dotted Line", (File.join(File.dirname(__FILE__),"vs_dotted_line","dotted_line_loader.rb")))
   vs_dotted_line.description=("Replace selected edges by dotted line.")
-  vs_dotted_line.version="1.0.0"
+  vs_dotted_line.version="1.0.1"
   vs_dotted_line.creator="Vladimir Syroezhkin"
   vs_dotted_line.copyright="© 2015—2016, Vladimir Syroezhkin"
   Sketchup.register_extension vs_dotted_line,true
