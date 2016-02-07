@@ -5,13 +5,8 @@ module VS::DottedLine
 
   class Dotted
 
-    attr_accessor :start_point
-    attr_accessor :end_point
-    attr_accessor :dot
-    attr_accessor :space
-    attr_reader   :step
-    attr_reader   :length
-    attr_reader   :number_of_lines
+    attr_accessor :start_point, :end_point, :dot, :space
+    attr_reader :step, :length, :number_of_lines
 
     def initialize(start_point = nil, end_point = nil, dot = nil, space = nil)
       @start_point = start_point

@@ -5,9 +5,7 @@ module VS::DottedLine
 
   class ConversionToDotted
 
-    attr_accessor :dot
-    attr_accessor :space
-    attr_accessor :soften
+    attr_accessor :dot, :space, :soften
 
     def initialize(dot = nil, space = nil, soften = nil)
       @dot = dot
