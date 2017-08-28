@@ -1,4 +1,4 @@
-# Copyright 2015-2016, Vladimir Syroezhkin
+# Copyright 2015-2017, Vladimir Syroezhkin
 # vladimir@syroezhkin.net
 
 require 'sketchup.rb'
@@ -16,6 +16,6 @@ unless file_loaded?(__FILE__)
       menu.add_item("Replace by dotted lines...") { VS::DottedLine.right_click_tool selection }
     end
   end
+  file_loaded(__FILE__)
 end
 
-file_loaded(__FILE__)
