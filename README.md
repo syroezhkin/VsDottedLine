@@ -1,3 +1,5 @@
+[![Github All Releases](https://img.shields.io/github/downloads/syroezhkin/VsDottedLine/total.svg)](https://github.com/syroezhkin/VsDottedLine/releases)
+
 ## Dotted Line for SketchUp
 
 This is a SketchUp Ruby extension. Using it you can:
