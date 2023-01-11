@@ -27,10 +27,10 @@ Watch the video:
 
 ## Installing
 
-Place the `vs_dotted_line.rb` file and `vs_dotted_line` folder into plugins folder, and then restart SketchUp.
+1. [Download](https://github.com/syroezhkin/VsDottedLine/releases) the lastest `.rbz` file.
+2. In SketchUp, select **Extensions > Extension Manager**. The Extension Manager window appears.
+3. Click the **Install Extension** button.
+4. In the Open dialog box that appears, navigate to the `.rbz` file saved to your computer, select the file, and click **OK** (Microsoft Windows) or **Open** (Mac OS X).
+5. When SketchUp warns you about installing only extensions from trusted sources, click **Yes** to proceed and install your extension. (This assumes you do, in fact, trust the source of your extension.)
 
-Windows - the default location is:
-`C:\Users\YOUR USERNAME\AppData\Roaming\SketchUp\SketchUp 2015\SketchUp\Plugins`
-
-Mac OS X - the default location is:
-Open a new Finder window, press and hold the Option key on your keyboard, then click **Go** in the menu bar **> Library > Application Support > SketchUp # > SketchUp > Plugins**
+See more about the installation in the [official documantation](https://help.sketchup.com/en/extension-warehouse/adding-extensions-sketchup).
